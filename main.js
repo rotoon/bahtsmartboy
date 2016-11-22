@@ -6,7 +6,7 @@ var mainState = {
     game.load.image('bg', 'assets/bg.png');
     game.load.image('over', 'assets/over.png');
     // game.load.spritesheet('name', 'path/to/filename', width, height)  optional : frame count.
-    game.load.spritesheet('player', 'assets/warrior_m.png', 32, 36);
+    game.load.spritesheet('player', 'assets/warrior_m1.png', 100, 100);
     game.load.spritesheet('coin', 'assets/coins.png', 40, 44, 4);
     game.load.spritesheet('cloud', 'assets/cloud.png');  
     
@@ -19,9 +19,10 @@ var mainState = {
     back.smoothed = false;  
       
     //cloud
-    var cloud = game.add.sprite(0 , 0, 'cloud');
-      
-    tweenA = game.add.tween(cloud).to( { x: 640 }, 20000);  
+    var cloud1 = game.add.sprite(-900 , 0, 'cloud');
+    tweenA = game.add.tween(cloud1).to( { x: 640 }, 200000, Phaser.Easing.Linear.InOut, true, 0, Number.MAX_VALUE, false).start(); 
+    
+    
     
       
     //Score
@@ -64,8 +65,8 @@ var mainState = {
     this.player.body.bounce.y = 0.25;
     this.player.body.gravity.y = 980;
     this.player.body.collideWorldBounds = true;
-    this.player.width = 50;
-    this.player.height = 50;
+    this.player.width = 100;
+    this.player.height = 100;
     // animations.add(name, frames, frame rate, loop);
     this.player.animations.add('right', [3, 4, 5], 10, true);
     this.player.animations.add('left', [9, 10, 11], 10, true);
@@ -79,11 +80,9 @@ var mainState = {
       
     // random spawn coins
     //game.time.events.loop(delay, callback, callbackContext, arguments)    
-    this.game.time.events.loop(2000, this.spawnCoins, this);  
+    this.game.time.events.loop(550, this.spawnCoins, this);  
     
     
-    this.cloudMove();
-    //tweenA.start();
     
       
               
@@ -99,7 +98,7 @@ var mainState = {
         
     // // check if player overlap coin
     game.physics.arcade.overlap(this.player, this.coins, this.collectCoin, null, this);
-    // check coin overlab floor  
+    // // check coin overlab floor  
     game.physics.arcade.overlap(this.myWorld, this.coins, this.decreaseLife, null, this);
     // reset player velocity
     this.player.body.velocity.x = 0;
@@ -125,17 +124,17 @@ var mainState = {
 
   spawnCoins: function() {
     
-      for (var i = 0; i < 2; i++) {
+      for (var i = 0; i < 1; i++) {
 
           var x = this.rnd.integerInRange(0, game.world.width - 40);
-          var y = this.rnd.integerInRange(0, game.world.height -480);
+          var y = this.rnd.integerInRange(0, game.world.height -500);
 
           this.coins.create(x, y, 'coin');
           this.coins.forEach(function(coin) {
             coin.animations.add('effect', [0, 1, 2, 3], 5, true);
             coin.animations.play('effect');
             game.physics.arcade.enable(coin);
-            coin.scale.setTo(0.5, 0.5);
+            coin.scale.setTo(0.75, 0.75);
             coin.body.gravity.y = 20;
             //coin.body.bounce.y = 0.5;
           
@@ -159,16 +158,12 @@ var mainState = {
                
       }
       else {
-          //game.stage.backgroundColor = "red";
           this.game.time.events.loop(0, null, this);
           this.player.kill();
           back = game.add.image(200, 100, 'over');
       }
    },
     
-  cloudMove: function(){
-      tweenA.start();
-  },
       
    
 };
