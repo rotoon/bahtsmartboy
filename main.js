@@ -8,16 +8,21 @@ var mainState = {
     // game.load.spritesheet('name', 'path/to/filename', width, height)  optional : frame count.
     game.load.spritesheet('player', 'assets/warrior_m.png', 32, 36);
     game.load.spritesheet('coin', 'assets/coins.png', 40, 44, 4);
-      
+    game.load.spritesheet('cloud', 'assets/cloud.png');  
     
   },
 
   create: function () {
-    
-    back = game.add.image(0, -63, 'bg');
+    //background
+    back = game.add.image(0, -28, 'bg');
     back.scale.set(1);
     back.smoothed = false;  
       
+    //cloud
+    var cloud = game.add.sprite(0 , 0, 'cloud');
+      
+    tweenA = game.add.tween(cloud).to( { x: 640 }, 20000);  
+    
       
     //Score
     this.score = 0;
@@ -68,15 +73,17 @@ var mainState = {
     
     this.coins = game.add.group();
     this.coins.enableBody = true;
+    
+    
+      
+      
     // random spawn coins
-       
-   
     //game.time.events.loop(delay, callback, callbackContext, arguments)    
     this.game.time.events.loop(2000, this.spawnCoins, this);  
     
-      
     
-    
+    this.cloudMove();
+    //tweenA.start();
     
       
               
@@ -159,6 +166,9 @@ var mainState = {
       }
    },
     
+  cloudMove: function(){
+      tweenA.start();
+  },
       
    
 };
