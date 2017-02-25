@@ -22,11 +22,29 @@
     </style>
 
     <script type="text/javascript" src="phaser.js"></script>
+    <script type="text/javascript" src="boot.js"></script>
+    <script type="text/javascript" src="preload.js"></script>
     <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="gameover.js"></script>
+
+    
+    
 </head>
 <body>
-    <div class="container">
-        <div id="game"></div>
+    <div class="container" >
+        <div id="game">
+            <script>
+            (function() {
+                    // Phaser.Game(width, height, renderer, HTML Element);
+                    var game = new Phaser.Game(640, 480, Phaser.AUTO, 'game');
+                    game.state.add("Boot",boot);
+                    game.state.add("Preload",preload);
+                    game.state.add('main', mainState);
+                    game.state.add("GameOver",gameOver);
+                    game.state.start("Boot");
+                })();    
+            </script>
+        </div>    
     </div>
 </body>
 </html>
