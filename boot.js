@@ -25,14 +25,14 @@ boot.prototype = {
         {			
             // Same goes for mobile settings.
             // In this case we're saying "scale the game, no lower than 480x260 and no higher than 1024x768"			
-            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;			
-            this.game.scale.minWidth = 480;			
-            this.game.scale.minHeight = 260;			
-            this.game.scale.maxWidth = 1024;			
-            this.game.scale.maxHeight = 768;			
-            this.game.scale.forceLandscape = true;			
-            this.game.scale.pageAlignHorizontally = true;			
-            this.game.scale.setScreenSize(true);		
+            this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;			
+            this.scale.minWidth = 480;			
+            this.scale.minHeight = 260;			
+            this.scale.maxWidth = 1024;			
+            this.scale.maxHeight = 768;			
+            this.scale.forceLandscape = true;			
+            this.scale.pageAlignHorizontally = true;			
+            this.scale.setScreenSize(true);		
         }
         
         
