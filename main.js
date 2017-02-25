@@ -9,6 +9,7 @@ var mainState = {
     game.load.spritesheet('player', 'assets/warrior_m1.png', 100, 100);
     game.load.spritesheet('coin', 'assets/coins.png', 40, 44, 4);
     game.load.spritesheet('cloud', 'assets/cloud.png');  
+    game.load.spritesheet('button', 'assets/button.png');
     
   },
 
@@ -79,13 +80,11 @@ var mainState = {
       
       
     // random spawn coins
-    //game.time.events.loop(delay, callback, callbackContext, arguments)    
-    this.game.time.events.loop(550, this.spawnCoins, this);  
-    
-    
-    
-      
-              
+    //game.time.events.loop(delay, callback, callbackContext, arguments)
+    var myloop = game.time.events.loop(550, this.spawnCoins, this); 
+    this.myloop 
+     
+    var x = 1;          
     
     this.cursors = this.input.keyboard.createCursorKeys();
   },
@@ -136,12 +135,12 @@ var mainState = {
             game.physics.arcade.enable(coin);
             coin.scale.setTo(0.75, 0.75);
             coin.body.gravity.y = 20;
-            //coin.body.bounce.y = 0.5;
+            
           
           
-        });
+            });
 
-        }
+      }
     },
 
   collectCoin: function(player, coin) {
@@ -158,11 +157,24 @@ var mainState = {
                
       }
       else {
-          this.game.time.events.loop(0, null, this);
+          //this.game.time.events.remove(this.myloop); 
           this.player.kill();
-          back = game.add.image(200, 100, 'over');
+         
+          back = game.add.image(150, 30, 'over')
+          button = game.add.button(game.world.centerX, game.world.centerY +95, 'button', this.restart, this);
+          button.scale.setTo(0.80, 0.80)
+          button.anchor.setTo(0.5, 0);
+         
+          
       }
    },
+    
+  
+  restart: function(){
+
+    game.state.start('main');
+
+    },
     
       
    
