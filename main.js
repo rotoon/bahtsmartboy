@@ -51,8 +51,8 @@ mainState.prototype = {
     ground.scale.setTo(2, 2);
     ground.body.immovable = true;
     //FullScreen botton
-    var gofull = this.game.add.button(10, 10, 'fullscreen', this.goFullscreen, this);
-    gofull.scale.setTo(0.15, 0.15);  
+//    var gofull = this.game.add.button(10, 10, 'fullscreen', this.goFullscreen, this);
+//    gofull.scale.setTo(0.15, 0.15);  
       
       
       
@@ -165,7 +165,7 @@ mainState.prototype = {
 
     },
     
-   goFullscreen: function() {
+  goFullscreen: function() {
 
     if (this.game.scale.isFullScreen)
     {

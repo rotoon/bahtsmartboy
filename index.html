@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <title>BahtSmart Boy : Collect Coins</title>
 
     <style>
@@ -25,6 +28,7 @@
     <script type="text/javascript" src="phaser.js"></script>
     <script type="text/javascript" src="boot.js"></script>
     <script type="text/javascript" src="preload.js"></script>
+    <script type="text/javascript" src="gametitle.js"></script>
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="gameover.js"></script>
 
@@ -40,6 +44,7 @@
                     var game = new Phaser.Game(640, 480, Phaser.AUTO, 'game');
                     game.state.add("Boot",boot);
                     game.state.add("Preload",preload);
+                    game.state.add("GameTitle",gameTitle);
                     game.state.add('main', mainState);
                     game.state.add("GameOver",gameOver);
                     game.state.start("Boot");
