@@ -1,9 +1,13 @@
 var mainState = function(game){}
 
+var nextJump = 0;
 
 mainState.prototype = {
 
   create: function () {
+
+ 
+      
     //background
     back = this.game.add.image(0, -28, "bg");
     back.scale.set(1);
@@ -50,10 +54,14 @@ mainState.prototype = {
     var ground = this.myWorld.create(0, this.game.world.height - 64, 'ground');
     ground.scale.setTo(2, 2);
     ground.body.immovable = true;
-    //FullScreen botton
-//    var gofull = this.game.add.button(10, 10, 'fullscreen', this.goFullscreen, this);
-//    gofull.scale.setTo(0.15, 0.15);  
-      
+
+    this.gamepad = this.game.plugins.add(Phaser.Plugin.VirtualGamepad);
+        
+    // Add a joystick to the game (only one is allowed right now)
+    this.joystick = this.gamepad.addJoystick(90, 420, 1.0, 'gamepad');
+        
+    // Add a button to the game (only one is allowed right now)
+    this.jumpButton = this.gamepad.addButton(550, 420, 1.0, 'gamepad');  
       
       
     this.player = this.game.add.sprite(0, 300, 'player');
@@ -70,9 +78,8 @@ mainState.prototype = {
     
     this.coins = this.game.add.group();
     this.coins.enableBody = true;
-    
-    
       
+   
       
     // random spawn coins
     //game.time.events.loop(delay, callback, callbackContext, arguments)
@@ -94,10 +101,10 @@ mainState.prototype = {
     this.game.physics.arcade.overlap(this.myWorld, this.coins, this.decreaseLife, null, this);
     // reset player velocity
     this.player.body.velocity.x = 0;
-    if (this.cursors.right.isDown) {
+    if (this.cursors.right.isDown || this.joystick.properties.right) {
       this.player.body.velocity.x = 400;
       this.player.animations.play('right');
-    } else if (this.cursors.left.isDown) {
+    } else if (this.cursors.left.isDown || this.joystick.properties.left) {
       this.player.body.velocity.x = -400;
       this.player.animations.play('left');
     } else {
@@ -106,11 +113,11 @@ mainState.prototype = {
     }
 
     // // Allow player to jump if player touching the ground.
-    if (this.cursors.up.isDown && this.player.body.touching.down) {
+    if ((this.cursors.up.isDown || this.jumpButton.isDown ) && this.player.body.touching.down) {
       this.player.body.velocity.y = -500;
     }
       
-      
+       
   },
     
 
@@ -179,7 +186,8 @@ mainState.prototype = {
     }    
     
    },
-   
+    
+    
 };
 
 //// Phaser.Game(width, height, renderer, HTML Element);

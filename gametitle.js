@@ -15,8 +15,6 @@ gameTitle.prototype = {
 
         }		
         
-
-
 		this.game.state.start("main");
         
 	}
