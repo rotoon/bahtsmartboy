@@ -21,7 +21,7 @@ mainState.prototype = {
     this.scoreText;
 
         // text(x, y, text, style);
-    this.scoreText = this.game.add.text(16, 16, 'Score : ' + this.score, {
+    this.scoreText = this.game.add.text(this.game.world.centerX - 25, 16, 'Score : ' + this.score, {
       fontSize: '20px',
       fill: '#ed3465'
     });
@@ -31,7 +31,7 @@ mainState.prototype = {
     this.lifescoreText;
 
         // text(x, y, text, style);
-    this.lifescoreText = this.game.add.text(350, 16, 'Life : ' + this.life, {
+    this.lifescoreText = this.game.add.text(this.game.world.centerX + 240, 16, 'Life : ' + this.life, {
       fontSize: '20px',
       fill: '#ed3465'
     });
@@ -50,7 +50,12 @@ mainState.prototype = {
     var ground = this.myWorld.create(0, this.game.world.height - 64, 'ground');
     ground.scale.setTo(2, 2);
     ground.body.immovable = true;
-    
+    //FullScreen botton
+    var gofull = this.game.add.button(10, 16, 'fullscreen', this.gofull, this);
+    gofull.scale.setTo(0.1, 0.1);  
+      
+      
+      
     this.player = this.game.add.sprite(0, 300, 'player');
     this.game.physics.arcade.enable(this.player);
     this.player.body.bounce.y = 0.25;
@@ -151,15 +156,7 @@ mainState.prototype = {
             this.player.kill();
           
           this.game.state.start("GameOver",true,false,this.score);
-          //this.game.time.events.remove(this.myloop); 
-//          this.player.kill();
-//         
-//          back = this.game.add.image(150, 30, 'over')
-//          button = this.game.add.button(this.game.world.centerX, this.game.world.centerY +95, 'button', this.restart, this);
-//          button.scale.setTo(0.80, 0.80)
-//          button.anchor.setTo(0.5, 0);
-         
-          
+  
       }
    },
     
@@ -170,7 +167,20 @@ mainState.prototype = {
 
     },
     
-      
+   gofull: function() {
+
+    if (this.game.scale.isFullScreen)
+    {
+        
+        this.game.scale.stopFullScreen();
+    }
+    else
+    {
+        this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+        this.game.scale.startFullScreen(false);
+    }    
+    
+   },
    
 };
 
