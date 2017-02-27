@@ -21,7 +21,7 @@ mainState.prototype = {
     this.scoreText;
 
         // text(x, y, text, style);
-    this.scoreText = this.game.add.text(this.game.world.centerX - 25, 16, 'Score : ' + this.score, {
+    this.scoreText = this.game.add.text(this.game.world.centerX - 35, 16, 'Score : ' + this.score, {
       fontSize: '20px',
       fill: '#ed3465'
     });
@@ -51,8 +51,8 @@ mainState.prototype = {
     ground.scale.setTo(2, 2);
     ground.body.immovable = true;
     //FullScreen botton
-    var gofull = this.game.add.button(10, 16, 'fullscreen', this.gofull, this);
-    gofull.scale.setTo(0.1, 0.1);  
+    var gofull = this.game.add.button(10, 10, 'fullscreen', this.goFullscreen, this);
+    gofull.scale.setTo(0.15, 0.15);  
       
       
       
@@ -79,8 +79,6 @@ mainState.prototype = {
     var myloop = this.game.time.events.loop(550, this.spawnCoins, this); 
     this.myloop 
      
-    var x = 1;          
-    
     this.cursors = this.input.keyboard.createCursorKeys();
   },
 
@@ -167,7 +165,7 @@ mainState.prototype = {
 
     },
     
-   gofull: function() {
+   goFullscreen: function() {
 
     if (this.game.scale.isFullScreen)
     {

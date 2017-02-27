@@ -34,11 +34,29 @@ boot.prototype = {
             this.game.scale.maxHeight = 768;
             this.game.scale.forceLandscape = true;
             this.game.scale.pageAlignHorizontally = true;
-            //this.scale.setScreenSize(true);
-            this.game.scale.startFullScreen();
+            this.game.scale.pageAlignVertically = true;
+            //this.game.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
+            //this.game.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);
+
         }
-        
+  
         
 		this.game.state.start("Preload");
-	}
+	},
+    
+    enterIncorrectOrientation: function () {
+
+            BasicGame.orientated = false;
+
+            document.getElementById('orientation').style.display = 'block';
+
+        },
+
+        leaveIncorrectOrientation: function () {
+
+            BasicGame.orientated = true;
+
+            document.getElementById('orientation').style.display = 'none';
+
+    },
 }
