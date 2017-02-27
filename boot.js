@@ -4,7 +4,7 @@ var boot = function(game){
   
 boot.prototype = {
 	preload: function(){
-          this.game.load.image("loading","assets/loading.png"); 
+          this.load.image('loading','assets/preloader-bar.png'); 
 	},
   	create: function(){
 		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -23,22 +23,17 @@ boot.prototype = {
         }		
         else		
         {			
-            // Same goes for mobile settings.
-            // In this case we're saying "scale the game, no lower than 480x260 and no higher than 1024x768"			
-            //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;	
-            
-            this.game.stage.fullScreenScaleMode = Phaser.StageScaleMode.EXACT_FIT;
-            this.game.stage.scale.startFullScreen();
-            this.game.stage.scale.setShowAll();
-            this.game.stage.scale.refresh();
-            
-//            this.scale.minWidth = 480;			
-//            this.scale.minHeight = 260;			
-//            this.scale.maxWidth = 1024;			
-//            this.scale.maxHeight = 768;			
-//            this.scale.forceLandscape = true;			
-//            this.scale.pageAlignHorizontally = true;			
-            //this.scale.setScreenSize(true);		
+            //  Same goes for mobile settings.
+            //  In this case we're saying "scale the game, no lower than 480x260 and no higher than 1024x768"
+
+            this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            this.scale.minWidth = 568;
+            this.scale.minHeight = 600;
+            this.scale.maxWidth = 2048;
+            this.scale.maxHeight = 1536;
+            this.scale.forceLandscape = true;
+            this.scale.pageAlignHorizontally = true;
+            this.scale.setScreenSize(true);
         }
         
         

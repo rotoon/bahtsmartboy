@@ -1,10 +1,15 @@
-var preload = function(game){}
+var preload = function(game){
+this.loadingBar = null ;
+
+}
 
 preload.prototype = {
 	preload: function(){ 
-          var loadingBar = this.add.sprite(700,700,"loading");
-          loadingBar.anchor.setTo(0.5,0.5);
-          this.load.setPreloadSprite(loadingBar);
+          
+          this.game.stage.backgroundColor = '#a8e8ff';
+          this.loadingBar = this.add.sprite(this.game.world.centerX,this.game.world.centerY,"loading");
+          this.loadingBar.anchor.setTo(0.5,0.5);
+          this.load.setPreloadSprite(this.loadingBar);
 
          
             this.game.load.image("ground", "assets/ground.png");
