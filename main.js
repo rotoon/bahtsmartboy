@@ -55,10 +55,10 @@ mainState.prototype = {
     this.gamepad = this.game.plugins.add(Phaser.Plugin.VirtualGamepad);
         
     // Add a joystick to the game (only one is allowed right now)
-    this.joystick = this.gamepad.addJoystick(90, 420, 1.0, 'gamepad');
+    this.joystick = this.gamepad.addJoystick(90, 400, 1.0, 'gamepad');
         
     // Add a button to the game (only one is allowed right now)
-    this.jumpButton = this.gamepad.addButton(550, 420, 1.0, 'gamepad');  
+    this.jumpButton = this.gamepad.addButton(550, 400, 1.0, 'gamepad');  
       
       
     this.player = this.game.add.sprite(0, 300, 'player');
