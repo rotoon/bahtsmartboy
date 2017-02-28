@@ -10,7 +10,7 @@
     <style>
         body {
             width: 100% ;
-            margin: 50px 0 0 0;
+            margin: 0 0 0 0;
             background: #ececec;
         }
         a {
@@ -21,7 +21,7 @@
             color: #fff;
         }
         #game canvas{
-            margin: 15px auto;
+            margin: 1px auto;
         }
     </style>
 
@@ -37,9 +37,8 @@
     
 </head>
 <body>
-    <div class="container" >
-        <div id="game">
-            <script>
+    <div id="game">
+        <script>
             (function() {
                     // Phaser.Game(width, height, renderer, HTML Element);
                     var game = new Phaser.Game(640, 480, Phaser.AUTO, 'game');
@@ -50,8 +49,7 @@
                     game.state.add("GameOver",gameOver);
                     game.state.start("Boot");
                 })();    
-            </script>
+        </script>
         </div>    
-    </div>
 </body>
 </html>

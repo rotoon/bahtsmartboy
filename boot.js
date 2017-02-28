@@ -18,20 +18,19 @@ boot.prototype = {
         this.game.stage.disableVisibilityChange = true;		
         if (this.game.device.desktop)		{
             // If you have any desktop specific settings, they can go in here	
-            //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            //this.scale.pageAlignHorizontally = true;
+
         }		
         else		
         {			
             //  Same goes for mobile settings.
             //  In this case we're saying "scale the game, no lower than 480x260 and no higher than 1024x768"
 
-            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            this.game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
             
-            this.game.scale.minWidth = 480;
-            this.game.scale.minHeight = 260;
-            this.game.scale.maxWidth = 1024;
-            this.game.scale.maxHeight = 768;
+            this.game.scale.minWidth = 260 ;
+            this.game.scale.minHeight = 480;
+            this.game.scale.maxWidth = 768;
+            this.game.scale.maxHeight = 1024;
             this.game.scale.forceLandscape = true;
             this.game.scale.pageAlignHorizontally = true;
             this.game.scale.pageAlignVertically = true;
@@ -46,17 +45,17 @@ boot.prototype = {
     
     enterIncorrectOrientation: function () {
 
-            BasicGame.orientated = false;
+        this.game.orientated = false;
 
-            document.getElementById('orientation').style.display = 'block';
+        document.getElementById('orientation').style.display = 'block';
 
-        },
+    },
 
-        leaveIncorrectOrientation: function () {
+    leaveIncorrectOrientation: function () {
 
-            BasicGame.orientated = true;
+        this.game.orientated = true;
 
-            document.getElementById('orientation').style.display = 'none';
+        document.getElementById('orientation').style.display = 'none';
 
     },
 }
