@@ -17,14 +17,12 @@ mainState.prototype = {
     var cloud1 = this.game.add.sprite(-900 , 0, 'cloud');
     tweenA = this.game.add.tween(cloud1).to( { x: 640 }, 200000, Phaser.Easing.Linear.InOut, true, 0, Number.MAX_VALUE, false).start(); 
     
-    
-    
       
     //Score
     this.score = 0;
     this.scoreText;
 
-        // text(x, y, text, style);
+    // text(x, y, text, style);
     this.scoreText = this.game.add.text(this.game.world.centerX - 35, 16, 'Score : ' + this.score, {
       fontSize: '20px',
       fill: '#ed3465'
@@ -42,8 +40,7 @@ mainState.prototype = {
     
 
     this.game.stage.backgroundColor = '#a8e8ff';
-    //game.add.sprite(0, 0, 'devahoy').anchor.setTo(0.5, 0.5);
-
+    
     var phys = this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
     this.myWorld = this.game.add.group();
@@ -79,8 +76,7 @@ mainState.prototype = {
     this.coins = this.game.add.group();
     this.coins.enableBody = true;
       
-   
-      
+    
     // random spawn coins
     //game.time.events.loop(delay, callback, callbackContext, arguments)
     
@@ -91,7 +87,8 @@ mainState.prototype = {
 
   update: function () {
     
-    this.game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
+    //this.game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
+    this.game.debug.text('Score: ' + this.score, 32, 32);  
     this.game.physics.arcade.collide(this.player, this.myWorld);
     //game.physics.arcade.collide(this.coins, this.myWorld);
     
@@ -118,6 +115,7 @@ mainState.prototype = {
       this.player.body.velocity.y = -500;
     }
       
+     
            
   },
     
@@ -191,11 +189,17 @@ mainState.prototype = {
     
    },
     
- loopCoin: function(score) {
-              
-        this.game.time.events.loop(1000, this.spawnCoins, this); 
+ loopCoin: function() {
         
-   }    
+        this.game.time.events.loop(800, this.spawnCoins, this); 
+        
+   },
+
+ increseCoin: function() {
+     
+     
+     
+ },
     
     
 };
