@@ -6,7 +6,7 @@ mainState.prototype = {
 
   create: function () {
 
- 
+    var score = 0;
       
     //background
     back = this.game.add.image(0, -28, "bg");
@@ -83,14 +83,15 @@ mainState.prototype = {
       
     // random spawn coins
     //game.time.events.loop(delay, callback, callbackContext, arguments)
-    var myloop = this.game.time.events.loop(550, this.spawnCoins, this); 
-    this.myloop 
+    
+    this.loopCoin(); 
      
     this.cursors = this.input.keyboard.createCursorKeys();
   },
 
   update: function () {
-
+    
+    this.game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
     this.game.physics.arcade.collide(this.player, this.myWorld);
     //game.physics.arcade.collide(this.coins, this.myWorld);
     
@@ -117,7 +118,7 @@ mainState.prototype = {
       this.player.body.velocity.y = -500;
     }
       
-       
+           
   },
     
 
@@ -147,6 +148,9 @@ mainState.prototype = {
     coin.destroy();
     this.score += 10;
     this.scoreText.text = 'Score : ' + this.score;
+      
+    //this.loopCoin(this.score);
+          
   },
     
   decreaseLife: function(myWorld , coin) {
@@ -187,12 +191,11 @@ mainState.prototype = {
     
    },
     
+ loopCoin: function(score) {
+              
+        this.game.time.events.loop(1000, this.spawnCoins, this); 
+        
+   }    
+    
     
 };
-
-//// Phaser.Game(width, height, renderer, HTML Element);
-//var game = new Phaser.Game(640, 480, Phaser.AUTO, 'game');
-
-//game.state.add('main', mainState);
-//game.state.start('main');
-

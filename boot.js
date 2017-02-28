@@ -13,7 +13,7 @@ boot.prototype = {
 		//this.scale.setScreenSize(true);
         
         // Unless you specifically know your game needs to support multi-touch I would recommend setting this to 1		
-        this.game.input.maxPointers = 1;		
+        this.game.input.maxPointers = 2;		
         // Phaser will automatically pause if the browser tab the game is in loses focus. You can disable that here:		
         this.game.stage.disableVisibilityChange = true;		
         if (this.game.device.desktop)		{
