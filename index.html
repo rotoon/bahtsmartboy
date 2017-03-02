@@ -24,6 +24,42 @@
             height: 100%;
             margin: 1px auto;
         }
+                @media only screen 
+            and (min-device-width : 768px) 
+            and (max-device-width : 1024px)  {
+        }
+        @media only screen 
+            and (min-device-width : 768px) 
+            and (max-device-width : 1024px)
+            and (-webkit-min-device-pixel-ratio: 2) {
+        }
+        @media only screen 
+            and (min-device-width : 768px) 
+            and (max-device-width : 1024px) 
+            and (-webkit-min-device-pixel-ratio: 1){
+        }
+        @media only screen 
+            and (min-device-width : 768px) 
+            and (max-device-width : 1024px)
+            and (-webkit-min-device-pixel-ratio: 1)  {
+        }
+        @media only screen 
+            and (min-device-width : 375px) 
+            and (max-device-width : 667px) {
+        }
+        @media only screen 
+            and (min-device-width : 414px) 
+            and (max-device-width : 736px) {
+        }
+        @media only screen 
+            and (min-device-width : 320px) 
+            and (max-device-width : 568px) {
+        }
+        @media only screen 
+            and (min-device-width : 320px) 
+            and (max-device-width : 480px) {
+        }
+        
     </style>
 
     <script type="text/javascript" src="phaser.js"></script>
@@ -42,6 +78,8 @@
         <script>
             (function() {
                     // Phaser.Game(width, height, renderer, HTML Element);
+                    var winW = document.body.offsetWidth; 
+                    var winH = document.body.offsetHeight; 
                     var game = new Phaser.Game(640, 480, Phaser.AUTO, 'game');
                     game.state.add("Boot",boot);
                     game.state.add("Preload",preload);
