@@ -34,33 +34,15 @@ boot.prototype = {
             this.game.scale.forceLandscape = true;
             this.game.scale.pageAlignHorizontally = true;
             this.game.scale.pageAlignVertically = true;
-            
-            
+    
             Phaser.ScaleManager.prototype.setScreenSize = Phaser.ScaleManager.prototype.updateLayout;
             
             this.game.scale.setScreenSize(true);
-            //this.game.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
-            //this.game.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);
+ 
 
         }
   
         
 		this.game.state.start("Preload");
 	},
-    
-    enterIncorrectOrientation: function () {
-
-        this.game.orientated = false;
-
-        document.getElementById('orientation').style.display = 'block';
-
-    },
-
-    leaveIncorrectOrientation: function () {
-
-        this.game.orientated = true;
-
-        document.getElementById('orientation').style.display = 'none';
-
-    },
 }
