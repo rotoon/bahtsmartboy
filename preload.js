@@ -12,8 +12,8 @@ preload.prototype = {
           this.load.setPreloadSprite(this.loadingBar);
 
          
-            this.game.load.image("ground", "assets/ground.png");
-            this.game.load.image("bg", "assets/bg.png");
+            this.game.load.image("ground", "assets/ground1.png");
+            this.game.load.image("bg", "assets/bg1.png");
             this.game.load.image("over", "assets/over.png");
             // game.load.spritesheet("name", "path/to/filename", width, height)  optional : frame count.
             this.game.load.spritesheet("player", "assets/warrior_m1.png", 100, 100);

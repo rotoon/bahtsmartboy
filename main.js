@@ -48,20 +48,20 @@ mainState.prototype = {
     this.myWorld.enableBody = true;
 
     // Group.create(x, y, image);
-    var ground = this.myWorld.create(0, this.game.world.height - 64, 'ground');
+    var ground = this.myWorld.create(0, this.game.world.height - 130, 'ground');
     ground.scale.setTo(2, 2);
     ground.body.immovable = true;
 
     this.gamepad = this.game.plugins.add(Phaser.Plugin.VirtualGamepad);
         
     // Add a joystick to the game (only one is allowed right now)
-    this.joystick = this.gamepad.addJoystick(90, 400, 1.0, 'gamepad');
+    this.joystick = this.gamepad.addJoystick(90, 415, 1.0, 'gamepad');
         
     // Add a button to the game (only one is allowed right now)
-    this.jumpButton = this.gamepad.addButton(550, 400, 1.0, 'gamepad');  
+    this.jumpButton = this.gamepad.addButton(550, 415, 1.0, 'gamepad');  
       
       
-    this.player = this.game.add.sprite(0, 300, 'player');
+    this.player = this.game.add.sprite(0, 0, 'player');
     this.game.physics.arcade.enable(this.player);
     this.player.body.bounce.y = 0.25;
     this.player.body.gravity.y = 980;

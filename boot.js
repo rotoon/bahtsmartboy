@@ -15,11 +15,7 @@ boot.prototype = {
           this.load.image('loading','assets/preloader-bar.png'); 
 	},
   	create: function(){
-		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-		//this.scale.pageAlignHorizontally = true;
-        //this.scale.pageAlignVertically = true;
-		//this.scale.setScreenSize(true);
-        
+
         // Unless you specifically know your game needs to support multi-touch I would recommend setting this to 1		
         this.game.input.maxPointers = 2;		
         // Phaser will automatically pause if the browser tab the game is in loses focus. You can disable that here:		
