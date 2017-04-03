@@ -8,13 +8,7 @@ gameTitle.prototype = {
 		playButton.anchor.setTo(0.5,0.5);
 	},
 	playTheGame: function(){
-        if (!this.game.device.desktop)		{
-            
-            this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-            this.game.scale.startFullScreen(false);
 
-        }		
-        
 		this.game.state.start("main");
         
 	}

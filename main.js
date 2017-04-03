@@ -88,7 +88,7 @@ mainState.prototype = {
   update: function () {
     
     //this.game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
-    this.game.debug.text('Score: ' + this.score, 32, 32);  
+    //this.game.debug.text('Score: ' + this.score, 32, 32);  
     this.game.physics.arcade.collide(this.player, this.myWorld);
     //game.physics.arcade.collide(this.coins, this.myWorld);
     
