@@ -20,11 +20,8 @@ preload.prototype = {
             this.game.load.spritesheet("coin", "assets/coins.png", 40, 44, 4);
             this.game.load.spritesheet("cloud", "assets/cloud.png");  
             this.game.load.spritesheet("button", "assets/button.png");
-            this.game.load.image("fullscreen", "assets/fullscreen.png");
             this.game.load.image("play", "assets/Playnow.png")
-            this.game.load.image("left", "assets/left.png")
-            this.game.load.image("right", "assets/right.png")
-            
+                        
             this.game.load.spritesheet('gamepad', 
             'assets/gamepad_spritesheet.png', 100, 100);
 

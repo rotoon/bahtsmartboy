@@ -87,10 +87,7 @@
      * @param {String} key - key for the gamepad's spritesheet
      * @param {Phaser.Sprite} The joystick object just created
      */
-    Phaser.Plugin.VirtualGamepad.prototype.addJoystick = function(x, 
-                                                                  y, 
-                                                                  scale, 
-                                                                  key) {
+    Phaser.Plugin.VirtualGamepad.prototype.addJoystick = function(x,y,scale,key) {
     
         // If we already have a joystick, return null
         if (this.joystick !== null) {
@@ -277,7 +274,7 @@
         
         // Move joystick pad images
         that.joystickPad.cameraOffset.x = that.joystickPoint.x + deltaX;
-        that.joystickPad.cameraOffset.y = that.joystickPoint.y + deltaY;
+//        that.joystickPad.cameraOffset.y = that.joystickPoint.y + deltaY;
     };
     
 } (Phaser));

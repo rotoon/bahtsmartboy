@@ -14,8 +14,8 @@ mainState.prototype = {
     back.smoothed = false;  
       
     //cloud
-    var cloud1 = this.game.add.sprite(-900 , 0, 'cloud');
-    tweenA = this.game.add.tween(cloud1).to( { x: 640 }, 200000, Phaser.Easing.Linear.InOut, true, 0, Number.MAX_VALUE, false).start(); 
+    var cloud1 = this.game.add.sprite(-900 , -100, 'cloud');
+    tweenA = this.game.add.tween(cloud1).to( { x: 640 }, 200000, Phaser.Easing.Linear.InOut, true, 0, Number.MAX_VALUE, true).start(); 
     
       
     //Score
@@ -55,10 +55,10 @@ mainState.prototype = {
     this.gamepad = this.game.plugins.add(Phaser.Plugin.VirtualGamepad);
         
     // Add a joystick to the game (only one is allowed right now)
-    this.joystick = this.gamepad.addJoystick(90, 415, 1.0, 'gamepad');
+    this.joystick = this.gamepad.addJoystick(90, 405, 1.0, 'gamepad');
         
     // Add a button to the game (only one is allowed right now)
-    this.jumpButton = this.gamepad.addButton(550, 415, 1.0, 'gamepad');  
+    this.jumpButton = this.gamepad.addButton(550, 405, 1.0, 'gamepad');  
       
       
     this.player = this.game.add.sprite(0, 0, 'player');
@@ -92,7 +92,6 @@ mainState.prototype = {
     this.game.physics.arcade.collide(this.player, this.myWorld);
     //game.physics.arcade.collide(this.coins, this.myWorld);
     
-        
     // // check if player overlap coin
     this.game.physics.arcade.overlap(this.player, this.coins, this.collectCoin, null, this);
     // // check coin overlab floor  
@@ -174,24 +173,9 @@ mainState.prototype = {
 
     },
     
-  goFullscreen: function() {
-
-    if (this.game.scale.isFullScreen)
-    {
-        
-        this.game.scale.stopFullScreen();
-    }
-    else
-    {
-        this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-        this.game.scale.startFullScreen(false);
-    }    
-    
-   },
-    
  loopCoin: function() {
         
-        this.game.time.events.loop(800, this.spawnCoins, this); 
+    this.game.time.events.loop(800, this.spawnCoins, this); 
         
    },
 
