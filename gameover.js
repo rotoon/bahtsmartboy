@@ -24,7 +24,17 @@ gameOver.prototype = {
 
     this.game.state.start('main');
 
-    }
+    },
     
+    shareScore :function(n){
+     FB.ui({
+          method: "feed",
+          link: "https://apps.facebook.com/risky-steps/",
+          caption: "Play Risky Steps now!!",
+          name: "My best score on Risky steps is " + n + "!!!!",
+          description: "I scored " + n + " points on Risky Steps. Can you beat my score?",
+          picture: "https://www.feronato.com/facebook/risky-steps/assets/pictures/feedpic.png"
+     }, function(response){});
+    }
       
 }
