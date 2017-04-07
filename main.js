@@ -132,7 +132,7 @@ mainState.prototype = {
             coin.animations.play('effect');
             //physics.arcade.enable(coin);
             coin.scale.setTo(0.75, 0.75);
-            coin.body.gravity.y = 100;
+            coin.body.gravity.y = 40;
             
           
           
