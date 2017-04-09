@@ -15,8 +15,11 @@ mainState.prototype = {
       
     //cloud
     var cloud1 = this.game.add.sprite(-900 , -100, 'cloud');
-    tweenA = this.game.add.tween(cloud1).to( { x: 640 }, 200000, Phaser.Easing.Linear.InOut, true, 0, Number.MAX_VALUE, true).start(); 
-    
+    tweenA = this.game.add.tween(cloud1).to( { x: 640 }, 200000, Phaser.Easing.Linear.InOut, true, 0, Number.MAX_VALUE, true).start();
+    tweenA.repeat(100, 100);
+          
+    // Unpause 
+    this.input.onDown.add(this.unPause, this);
       
     //Score
     this.score = 0;
@@ -28,16 +31,15 @@ mainState.prototype = {
       fill: '#ed3465'
     });
       
-    //Life  
+    /*//Life  
     this.life = 5;
     this.lifescoreText;
 
         // text(x, y, text, style);
-    this.lifescoreText = this.game.add.text(this.game.world.centerX + 240, 16, 'Life : ' + this.life, {
+    this.lifescoreText = this.game.add.text(this.game.world.centerX +100, 16, 'Life : ' + this.life, {
       fontSize: '20px',
       fill: '#ed3465'
-    });
-    
+    });*/
 
     this.game.stage.backgroundColor = '#a8e8ff';
     
@@ -60,6 +62,12 @@ mainState.prototype = {
     // Add a button to the game (only one is allowed right now)
     this.jumpButton = this.gamepad.addButton(550, 405, 1.0, 'gamepad');  
       
+    // Add Pause Button
+    
+    pauseButton = this.game.add.button(this.game.world.centerX +270, 10, 'pause', this.pauseGame, this);
+    pauseButton.scale.setTo(0.5, 0.5);
+    pauseButton.anchor.setTo(0.5, 0);
+      
       
     this.player = this.game.add.sprite(0, 0, 'player');
     this.game.physics.arcade.enable(this.player);
@@ -72,11 +80,18 @@ mainState.prototype = {
     this.player.animations.add('right', [3, 4, 5], 10, true);
     this.player.animations.add('left', [9, 10, 11], 10, true);
     this.player.frame = 6;
+    this.player.health = 5;  
+    
+    //health icon
+    var healthMeterIcons = this.game.add.plugin(Phaser.Plugin.HealthMeter);
+    healthMeterIcons.icons(this.player, {icon: 'heart', y: 20, x: 20, width: 20, height: 20, rows: 1});
+      
+    this.game.world.sendToBack(healthMeterIcons);  
     
     this.coins = this.game.add.group();
     this.coins.enableBody = true;
       
-    
+    this.game.input.onDown.add(this.unPause, self);
     // random spawn coins
     //game.time.events.loop(delay, callback, callbackContext, arguments)
     
@@ -114,8 +129,7 @@ mainState.prototype = {
       this.player.body.velocity.y = -500;
     }
       
-     
-           
+               
   },
     
 
@@ -152,16 +166,11 @@ mainState.prototype = {
     
   decreaseLife: function(myWorld , coin) {
       coin.destroy();
-      if(this.life>0) {
-          this.life -= 1;
-          this.lifescoreText.text = 'Life : ' + this.life;
-               
-      }
-      else {
-          
-            this.player.kill();
-          
-          this.game.state.start("GameOver",true,false,this.score);
+      this.player.damage(1);
+      if(this.player.health == 0) {
+                    
+         this.player.kill();
+         this.game.state.start("GameOver",true,false,this.score);
   
       }
    },
@@ -179,11 +188,23 @@ mainState.prototype = {
         
    },
 
- increseCoin: function() {
+ pauseGame: function() {
      
-     
+     this.game.paused = true;
+     choiseLabel = this.game.add.text(this.game.world.centerX, this.game.world.centerY, 'Click to continue', { font: '30px Arial', fill: '#ed3465' });
+     choiseLabel.anchor.setTo(0.5, 0.5);
      
  },
+    
+ unPause: function(event) {
+     
+     if(this.game.paused){
+         this.game.paused = false;
+         choiseLabel.destroy();
+     }
+     
+     
+ }
     
     
 };
