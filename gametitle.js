@@ -8,7 +8,7 @@ gameTitle.prototype = {
         gameInstraction.scale.set(0.70);
         gameInstraction.anchor.setTo(0.5,0.5);
         
-		var playButton = this.game.add.button(this.game.world.centerX ,this.game.world.centerY +198, "play", this.playTheGame, this);
+		var playButton = this.game.add.button(this.game.world.centerX ,this.game.world.centerY +190, "play", this.playTheGame, this);
         playButton.scale.set(0.25);
 		playButton.anchor.setTo(0.5,0.5);
 	},
