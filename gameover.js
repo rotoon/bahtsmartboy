@@ -25,5 +25,18 @@ gameOver.prototype = {
     this.game.state.start('main');
 
     },
+    
+    shareScore: function(score) {
+        FB.ui({ method: 'feed',
+        link: 'http://rotoon.esy.es/',
+        picture: 'https://www.feronato.com/facebook/risky-steps/assets/pictures/feedpic.png',
+        name: 'My best score on BahtSmart Boy : Collect Coins is " + n + "!!!!"',
+        description: 'I scored ' + score +  'points on BahtSmart Boy : Collect Coins. Can you beat my score?',
+        actions: [
+            { name: 'Name of my site', link: 'http://rotoon.esy.es/' }
+        ],
+        display: 'popup'
+        }, function(response){});
+    }
  
 }

@@ -84,7 +84,7 @@ mainState.prototype = {
     
     //health icon
     var healthMeterIcons = this.game.add.plugin(Phaser.Plugin.HealthMeter);
-    healthMeterIcons.icons(this.player, {icon: 'heart', y: 20, x: 20, width: 20, height: 20, rows: 1});
+    healthMeterIcons.icons(this.player, {icon: 'heart', y: 16, x: 20, width: 20, height: 20, rows: 1});
       
     this.game.world.sendToBack(healthMeterIcons);  
     
@@ -146,12 +146,8 @@ mainState.prototype = {
             coin.animations.play('effect');
             //physics.arcade.enable(coin);
             coin.scale.setTo(0.75, 0.75);
-            coin.body.gravity.y = 40;
-            
-          
-          
+            coin.body.gravity.y = 60;
             });
-
       }
     },
 
@@ -168,7 +164,6 @@ mainState.prototype = {
       coin.destroy();
       this.player.damage(1);
       if(this.player.health == 0) {
-                    
          this.player.kill();
          this.game.state.start("GameOver",true,false,this.score);
   
@@ -177,15 +172,11 @@ mainState.prototype = {
     
   
   restart: function(){
-
     this.game.state.start('main');
-
     },
     
  loopCoin: function() {
-        
     this.game.time.events.loop(800, this.spawnCoins, this); 
-        
    },
 
  pauseGame: function() {
