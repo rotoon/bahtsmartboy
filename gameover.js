@@ -32,6 +32,7 @@ gameOver.prototype = {
     restart: function(){
 
     this.game.state.start('main');
+    score = 0;
 
     },
     
