@@ -1,16 +1,16 @@
 var gameOver = function(game){}
+var max; 
 
 gameOver.prototype = {
-    init: function(score){
-		
+    init: function(){
         scoreText = this.game.add.text(this.game.world.centerX,this.game.world.centerY -200, "Your Score : " + score, {
         fontSize: '30px',
         fill: '#ffffff'
         });
         scoreText.anchor.setTo(0.5, 0);
-	},
+    },
     
-    create: function(score){
+    create: function(){
      
         over = this.game.add.image(this.game.world.centerX, this.game.world.centerY -150, 'over')
         over.scale.setTo(0.65);
@@ -25,7 +25,8 @@ gameOver.prototype = {
         share.scale.setTo(0.5, 0.5);
         share.anchor.setTo(0.5, 0);
         
-        
+        console.log(score);
+                
     },
     
     restart: function(){
@@ -34,17 +35,18 @@ gameOver.prototype = {
 
     },
     
-    shareScore: function(score) {
+    shareScore: function() {
+        console.log(score);
         FB.ui({ method: 'feed',
         link: 'http://rotoon.esy.es/',
         picture: 'https://sdl-stickershop.line.naver.jp/stickershop/v1/product/1119129/LINEStorePC/main@2x.png',
-        name: 'My best score on BahtSmart Boy : Collect Coins is " + n + "!!!!"',
+        name: 'My score on BahtSmart Boy : Collect Coins is ' + score + '!!!!',
         description: 'I scored ' + score +  'points on BahtSmart Boy : Collect Coins. Can you beat my score?',
         actions: [
             { name: 'Name of my site', link: 'http://rotoon.esy.es/' }
         ],
         display: 'popup'
         }, function(response){});
-    }
+    },
  
 }

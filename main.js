@@ -2,11 +2,12 @@ var mainState = function(game){}
 
 var nextJump = 0;
 
+var score = 0;
+
 mainState.prototype = {
 
   create: function () {
 
-    var score = 0;
       
     //background
     back = this.game.add.image(0, -28, "bg");
@@ -154,8 +155,8 @@ mainState.prototype = {
 
   collectCoin: function(player, coin) {
     coin.destroy();
-    this.score += 10;
-    this.scoreText.text = 'Score : ' + this.score;
+    score += 10;
+    this.scoreText.text = 'Score : ' + score;
       
     //this.loopCoin(this.score);
           
