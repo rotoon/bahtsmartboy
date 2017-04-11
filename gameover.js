@@ -1,5 +1,4 @@
 var gameOver = function(game){}
-var max; 
 
 gameOver.prototype = {
     init: function(){
@@ -24,8 +23,6 @@ gameOver.prototype = {
         
         share.scale.setTo(0.5, 0.5);
         share.anchor.setTo(0.5, 0);
-        
-        console.log(score);
                 
     },
     
@@ -41,8 +38,8 @@ gameOver.prototype = {
         FB.ui({ method: 'feed',
         link: 'http://game.bahtsmart.com/',
         picture: 'https://sdl-stickershop.line.naver.jp/stickershop/v1/product/1119129/LINEStorePC/main@2x.png',
-        name: 'My score on BahtSmart Boy : Collect Coins is ' + score + '!!!!',
-        description: 'I scored ' + score +  'points on BahtSmart Boy : Collect Coins. Can you beat my score?',
+        name: 'My score is ' + score + ' !!!!',
+        description: 'I scored ' + score +  'points on BahtSmart Boy : Collect Coins. Can you beat me?',
         actions: [
             { name: 'BahtSmart Boy', link: 'http://game.bahtsmart.com/' }
         ],
