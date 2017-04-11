@@ -39,12 +39,12 @@ gameOver.prototype = {
     shareScore: function() {
         console.log(score);
         FB.ui({ method: 'feed',
-        link: 'http://rotoon.esy.es/',
+        link: 'http://game.bahtsmart.com/',
         picture: 'https://sdl-stickershop.line.naver.jp/stickershop/v1/product/1119129/LINEStorePC/main@2x.png',
         name: 'My score on BahtSmart Boy : Collect Coins is ' + score + '!!!!',
         description: 'I scored ' + score +  'points on BahtSmart Boy : Collect Coins. Can you beat my score?',
         actions: [
-            { name: 'Name of my site', link: 'http://rotoon.esy.es/' }
+            { name: 'BahtSmart Boy', link: 'http://game.bahtsmart.com/' }
         ],
         display: 'popup'
         }, function(response){});
