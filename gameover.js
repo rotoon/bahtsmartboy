@@ -34,10 +34,9 @@ gameOver.prototype = {
     },
     
     shareScore: function() {
-        console.log(score);
         FB.ui({ method: 'feed',
         link: 'http://game.bahtsmart.com/',
-        picture: 'https://sdl-stickershop.line.naver.jp/stickershop/v1/product/1119129/LINEStorePC/main@2x.png',
+        picture: 'https://www.uppic.org/image-3B93_58EDDC6E.jpg',
         name: 'My score is ' + score + ' !!!!',
         description: 'I scored ' + score +  'points on BahtSmart Boy : Collect Coins. Can you beat me?',
         actions: [
